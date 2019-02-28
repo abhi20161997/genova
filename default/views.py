@@ -7,7 +7,9 @@ from django.http import HttpResponse
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 
-
+def redirect_view(request):
+    response = redirect('/genova/')
+    return response
 
 def index(request):
     return render(request, 'default/index.html')
@@ -46,7 +48,7 @@ def tab_product(request,product_id):
 	return render(request, 'default/product_tab.html',context)
 
 def inj_product(request,product_id):
-	product = Injection.objects.get(id=product_id)	
+	product = Injection.objects.get(id=product_id)
 	context = {'product':product}
 	if product.price_25:
 		p25 = 25 * product.price_25
@@ -194,7 +196,7 @@ def add_injection_to_cart(request, product_id):
 			injection = Injection.objects.get(pk = product_id)
 			current_member.injection_bought.add(injection)
 			injection.purchase_quantity=data
-			injection.save(update_fields=["purchase_quantity"]) 
+			injection.save(update_fields=["purchase_quantity"])
 			messages.success(request, "Injection added to cart!")
 		return redirect('/genova/injections')
 	else:
@@ -219,7 +221,7 @@ def add_medicine_to_cart(request,product_id):
 			medicine = Medicine.objects.get(pk = product_id)
 			current_member.medicine_bought.add(medicine)
 			medicine.purchase_quantity=data
-			medicine.save(update_fields=["purchase_quantity"]) 
+			medicine.save(update_fields=["purchase_quantity"])
 			messages.success(request, "Medicine added to cart!")
 		return redirect('/genova/medicines')
 	else:
@@ -241,4 +243,3 @@ def alpha(request,alpha):
 	injections = Injection.objects.filter(brand=alpha)
 	return render(request, 'default/brands.html',{"medicines": medicines,
 		"tablets":tablets, "injections":injections})
-   
