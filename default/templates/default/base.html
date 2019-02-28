@@ -1,0 +1,101 @@
+{% load static %}
+<div class="above-everything-else">
+		<div>
+			<div data-collapse="medium" data-animation="default" data-duration="400" class="top-nav w-nav">
+				<a href="{% url 'default:index'  %}" class="logo-top-left w-inline-block"></a>
+				<nav role="navigation" class="nav-wrapper w-nav-menu">
+					<div data-delay="500" class="w-dropdown">
+						<div data-ix="dropdown-button" class="dropdown-toggle w-clearfix w-dropdown-toggle">
+							<div class="inline-text">Products</div>
+							<div class="dropdown-caret w-icon-dropdown-toggle"></div>
+						</div>
+						<nav data-ix="dropdown-list" class="dropdown w-dropdown-list">
+							<a href="{% url 'default:tablets'  %}" id="nav_products_overview" class="dropdown-link w-dropdown-link">Tablets</a>
+							<a href="{% url 'default:injections'  %}" id="nav_products_highend" class="dropdown-link w-dropdown-link">Injections</a>
+							<a href="{% url 'default:medicines'  %}" id="nav_products_media" class="dropdown-link w-dropdown-link">Medicines</a>
+							<!-- <a href="/products/web-mobile-vr" id="nav_products_mobile" class="dropdown-link w-dropdown-link">Web &amp; Mobile VR</a>
+							<a href="/products/immersive-media" id="nav_products_media" class="dropdown-link w-dropdown-link">Immersive Media</a> -->
+						</nav>
+					</div>
+					<div data-delay="500" class="w-dropdown">
+							<div data-ix="dropdown-button" class="dropdown-toggle w-clearfix w-dropdown-toggle">
+								<div class="inline-text">Brands</div>
+								<div class="dropdown-caret w-icon-dropdown-toggle"></div></div>
+								<nav data-ix="dropdown-list" class="dropdown w-dropdown-list">
+									<!-- <a href="/products" id="nav_products_overview" class="dropdown-link w-dropdown-link">Overview</a> -->
+									<a href="{% url 'default:alpha' alpha='alpha'  %}" id="nav_products_highend" class="dropdown-link w-dropdown-link">Alpha Pharma</a>
+									<!-- <a href="/products/web-mobile-vr" id="nav_products_mobile" class="dropdown-link w-dropdown-link">Web &amp; Mobile VR</a> -->
+									<a href="{% url 'default:alpha' alpha='bm'  %}" id="nav_products_media" class="dropdown-link w-dropdown-link">BM Pharma</a>
+									<a href="{% url 'default:alpha' alpha='maxtreme'  %}" id="nav_products_media" class="dropdown-link w-dropdown-link">Maxtreme Pharma</a>
+									<a href="{% url 'default:alpha' alpha='eminence'  %}" id="nav_products_media" class="dropdown-link w-dropdown-link">Eminence Labs</a>
+								</nav>
+							</div>
+
+							<a href="{% url 'default:about'  %}"  class="nav-link w-nav-link">About</a>
+	{% if user.is_authenticated %}
+    	<a class="nav-link w-nav-link">{{ user.get_username }} <img src="{% static 'default/user.png' %}" width ="17px"alt=""/></a>
+    	<a href="{% url 'default:sign_out'  %}"  class="nav-link w-nav-link">Logout</a>
+	{% else %}
+    	<a href="{% url 'default:sign_in'  %}"  class="nav-link w-nav-link">Login</a>
+		<a href="{% url 'default:sign_up'  %}"  class="nav-link w-nav-link">Sign Up</a>
+	{% endif %}
+	<a href="{% url 'default:cart'  %}" class="nav-link w-nav-link">Cart <img src="{% static 'default/cart.png' %}" width ="20px" height ="22px" alt=""/></a>
+					<!-- <a href="/faq" class="nav-link w-nav-link">FAQ</a>
+					<a href="/what-is-vr-for-real-estate" class="nav-link w-nav-link">What is VR?</a> -->
+					<a href="{% url 'default:contact'  %}" id="button_contact_nav" class="nav-button contact w-inline-block">
+						<div>Contact</div>
+					</a>
+				</nav>
+				<div class="menu-button-wrapper w-clearfix">
+					<div class="nav-button no-line w-nav-button">
+						<div class="top-nav-menu-text">Menu</div>
+						<div class="menu-icon w-icon-nav-menu"></div>
+					</div>
+				</div>
+			</div>
+			<header data-ix="hide-fixed-navbar-on-load" class="fixed-topnav">
+				<div data-collapse="medium" data-animation="default" data-duration="400" class="fixed-navbar w-nav">
+					<a href="{% url 'default:index'  %}" class="logo-top-left w-inline-block"></a>
+					<nav role="navigation" class="nav-wrapper w-nav-menu">
+						<div data-delay="500" class="w-dropdown">
+							<div data-ix="dropdown-button" class="dropdown-toggle w-clearfix w-dropdown-toggle">
+								<div class="inline-text">Products</div>
+								<div class="dropdown-caret w-icon-dropdown-toggle"></div>
+							</div>
+							<nav data-ix="dropdown-list" class="dropdown w-dropdown-list"><a href="{% url 'default:tablets'  %}" id="nav_products_overview" class="dropdown-link w-dropdown-link">Tablets</a>
+								<a href="{% url 'default:injections'  %}" id="nav_products_highend" class="dropdown-link w-dropdown-link">Injections</a>
+								<a href="{% url 'default:medicines'  %}" id="nav_products_media" class="dropdown-link w-dropdown-link">Medicines</a>
+								<!-- <a href="/products/web-mobile-vr" id="nav_products_mobile" class="dropdown-link w-dropdown-link">Web &amp; Mobile VR</a>
+								<a href="/products/immersive-media" id="nav_products_media" class="dropdown-link w-dropdown-link">Immersive Media</a> -->
+							</nav>
+						</div>
+						<div data-delay="500" class="w-dropdown">
+											<div data-ix="dropdown-button" class="dropdown-toggle w-clearfix w-dropdown-toggle">
+												<div class="inline-text">Brands</div>
+												<div class="dropdown-caret w-icon-dropdown-toggle"></div></div>
+												<nav data-ix="dropdown-list" class="dropdown w-dropdown-list">
+													<a href="{% url 'default:alpha' alpha='alpha' %}" id="nav_products_overview" class="dropdown-link w-dropdown-link">Alpha Pharma</a>
+													<a href="{% url 'default:alpha' alpha='bm'  %}" id="nav_products_highend" class="dropdown-link w-dropdown-link">BM Pharma</a>
+													<a href="{% url 'default:alpha' alpha='maxtreme'  %}" id="nav_products_highend" class="dropdown-link w-dropdown-link">Maxtreme Pharma</a>
+													<a href="{% url 'default:alpha' alpha='eminence'  %}" id="nav_products_highend" class="dropdown-link w-dropdown-link">Eminence Labs</a>
+												</div><a href="{% url 'default:about'  %}" class="nav-link w-nav-link w--current">About</a>
+	{% if user.is_authenticated %}
+    	<a class="nav-link w-nav-link">{{ user.get_username }} <img src="{% static 'default/user.png' %}" width ="17px"alt=""/></a>
+    	<a href="{% url 'default:sign_out'  %}"  class="nav-link w-nav-link">Logout</a>
+	{% else %}
+    	<a href="{% url 'default:sign_in'  %}"  class="nav-link w-nav-link">Login</a>
+		<a href="{% url 'default:sign_up'  %}"  class="nav-link w-nav-link">Sign Up</a>
+	{% endif %}
+	<a href="{% url 'default:cart'  %}" class="nav-link w-nav-link">Cart <img src="{% static 'default/cart.png' %}" width ="20px" height ="22px" alt=""/></a>
+						<a href="{% url 'default:contact'  %}" id="button_contact_nav" class="nav-button contact w-inline-block">
+							<div>Contact</div>
+						</a>
+					</nav>
+					<div class="menu-button-wrapper w-clearfix">
+						<div class="nav-button no-line w-nav-button">
+							<div class="top-nav-menu-text">Menu</div>
+							<div class="menu-icon w-icon-nav-menu"></div>
+						</div>
+					</div>
+				</div>
+			</header>
